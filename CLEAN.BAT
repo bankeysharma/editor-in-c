@@ -1,0 +1,5 @@
+@ECHO OFF
+DEL *.TMP
+DEL *.OBJ
+DEL *.EXE
+@ECHO ON

@@ -1,0 +1,140 @@
+# include ".\exconst.c"
+
+char *lstexMode[] = {
+								"exRead","exUpdate","exAppend","exCreate",
+								"exInsert","exKey","exCmd","exMenu"
+							};
+
+int gMaxRows, gMaxCols, gTop, gLeft, gRight, gBottom;
+int gTablen = 3;
+
+int gscrbkColor = BLACK;
+int gscrforeColor = LIGHTGRAY;
+int gmnubkColor = BLUE;
+
+int gtxtbkColor = WHITE;
+int gtxtforeColor = BLACK;
+int gtxtdisableColor = DARKGRAY;
+
+int glblbkColor = BLACK;
+int glblforeColor = WHITE;
+int glblhintColor = BLUE;
+int glbldisableColor = DARKGRAY;
+
+int glstviewbkColor = WHITE;
+int glstviewforeColor = BLACK;
+int glstviewselColor = BLUE;
+int glstviewnodebkColor = WHITE;
+int glstviewnodeforeColor = BLACK;
+
+int gcmdforeColor = LIGHTGRAY;
+int gcmdbkColor = BLACK;
+int gcmdshadowColor = LIGHTGRAY;
+int gcmdfocusColor = BLUE;
+
+char gTabStr[20];
+char gTabChar = ' ';
+
+bool isAlpha = _TRUE;	/* To determine whether we are using editor
+									in	developement mode or not? */
+
+typFile *Folder, *boxFile;
+typWindow *baseWin, *actWin;
+
+typexMode gEdMode;
+
+struct text_info txtsetting;
+
+/*	*********************************************
+	Function declaration
+	********************************************* */
+
+int quit(int);
+
+/* *********************************************************************** */
+
+int main(int argc, char **argv)
+{
+	int i;
+	struct text_info ti;
+	char *filename = "FILE.TXT";
+
+	setexMode(exRead);	/* Default Read only mode. */
+
+	Folder = _EMPTY;		/* Initially empty folder. */
+	boxFile = NULL;		/* No file present. */
+
+	baseWin = NULL;   /* Initially empty baseWindow. */
+	actWin = NULL;		/* No window defined. */
+
+	if(argc >= 2) {
+		isAlpha = _FALSE;
+		strcpy(filename,argv[1]);
+	}
+
+	setEnv();
+	setExtent();
+	buildMenuSys();
+
+	switch (assemble_boxFile(filename)) {
+		case _MEM_ERROR:
+			quit(_MEM_ERROR);
+			break;
+		case _CAN_NOT_OPEN:
+			fprintf(stderr,"\nCan't open file : [%s]",filename);
+			exit(0);
+			break;
+	}
+
+	return(quit(operateEditor()));
+
+}
+
+/* ************************************************
+	Function : quit
+	Purpose	: To quit from the editor.
+	************************************************ */
+
+int quit(int index)
+{
+	typLine *tmpLine;
+	typFile *tmpFile;
+	char *tmpStr;
+
+	if(!isAlpha) clrscr();
+
+	if (index == _MEM_ERROR) {
+		clrscr();
+		fprintf(stderr,"\nInsufficient memory");
+	}
+
+/*	razeMenuSys();		/* Reclaiming memory allocated */
+							/* to graphical menu syatem. */
+
+/*	Folder->pre->next = NULL;
+	while(Folder) {				/* Reclaiming memory allocated */
+/*		tmpFile = Folder;			/* to in-memory copy of files. */
+/*		Folder = tmpFile->next;
+		((tmpFile->root)->pre)->next = NULL;
+		while(tmpFile->root) {
+			tmpLine = tmpFile->root;
+			tmpStr = tmpLine->line;
+			tmpFile->root = tmpLine->next;
+			free(tmpLine);
+			free(tmpStr);
+		}
+		free(tmpFile->filename);
+		free(tmpFile->filetitle);
+		free(tmpFile);
+	}
+*/
+	return(0);
+}
+
+/*	while((i=convert(bioskey(0))) != _ESC_KEY)
+		printf("%c",i);
+*/
+
+/*	for(i=0;i<256;i++)
+		printf("%d : %c\t",i,i);
+*/

@@ -1,0 +1,3 @@
+@echo Backing up...
+xcopy/s/e/c/i *.* ..\exEdBkp
+@echo Backup complete.

@@ -1,0 +1,85 @@
+	1. BOURNESHELL OVERVIEW
+* 1.1 What is the BourneShell?
+		* 1.2 Making a	Bourne 	Shell Script Executable
+* 1.3 Tracing Mechanisms
+* Workshop 1
+	Go to the bottom, first,previous,next, last section, table of contents.
+
+1.  BOURNESHELL OVERVIEW
+
+
+The BourneShell is both a command-line interpreter and a high-level programming language.  When it is acting as a command-line
+interpreter, it processes commands as you enter them at the command prompt.  When you use it as a programming language, it processes
+commands that are stored in files known as BourneShell scripts. This course will show you how to create and execute BourneShell scripts.
+We will explore BourneShell programming including such features as variables, control structures, processes, and executable files.
+
+The BourneShell is one of three shells available on most UNIX systems.
+Bourne is the accepted standard for System V UNIX.  The other shells are being used more and more.  The other shells are
+the CShell and the KornShell.  The CShell is BSD (Berkeley Software Distribution) UNIX. BSD was developed at the University of
+
+California at Berkeley, California. Most of the features found in the BourneShell are also found in the other shells; there are
+differences, however.  The CShell and KornShell are not standard on UNIX System V but are generally available.
+
+BourneShell scripts allow you to group command lines together and execute them by entering a single command at the command line. This
+allows complex functions to be completed by any user, and repetitive functions can be completed easily.  Input and output
+can also be redirected from a BourneShell script.
+
+1.1  What is the BourneShell?
+
+BourneShell is a high level programming language and a command line interpreter.
+The command to invoke the BourneShell is:
+
+  Command Format:  sh [-acefhiknrstuvx] [args]
+
+  (See Appendix A for a complete list of options etc)
+
+A Shell script is an executable plain file that contains UNIX and shell commands. To execute the shell script type the name of the
+script at the prompt. A simple shell script called shell_ex is shown in the following example. The output from the execution of
+the shell is also shown.
+
+Sample Session:
+
+ $cat shell_ex
+ echo "This is a very simple shell procedure "
+ echo "created with the basic echo command "
+ echo "and three other very basic commands "
+ echo
+ ps
+ echo
+ who
+ echo
+ ls
+ $sh shell_ex
+ This is a very simple shell procedure
+ created with the very basic echo command
+ and three other very basic commands
+
+ PID    TTY     TIME    COMMAND
+ 10443 rt02120  0:01    sh
+ 10427 rt02120  0:04    ksh
+
+ sgavlick  rt021e0   Sep 7   13:26
+ teacher   rt021b0   Sep 7   14:39
+
+ memo
+ class_notes
+ $
+
+1.2  Making a Bourne Shell Script Executable
+
+A BourneShell script is an ordinary file that contains commands which can be executed in sequence by entering one command at the
+BourneShell prompt.  In order for a script to be executed, it must first be executable.  This is done with the chmod command.
+
+Sample Session:
+
+ $cat shell_ex
+ echo "This is a very simple shell procedure "
+ echo "created with the basic echo command "
+ echo "and three other very basic commands "
+ echo                                                          
+ ps                                                            
+ echo                                                          
+ who
+ echo
+ ls
+ benk

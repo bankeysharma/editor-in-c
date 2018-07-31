@@ -1,0 +1,21 @@
+	1. BOURNESHELL OVERVIEW
+* 1.1 What is the BourneShell?
+		* 1.2 Making a	Bourne 	Shell Script Executable
+* 1.3 Tracing Mechanisms
+* Workshop 1
+	Go to the bottom, first,previous,next, last section, table of contents.
+
+1.  BOURNESHELL OVERVIEW
+
+
+The BourneShell is both a command-line interpreter and a high-level programming language.  When it is acting as a command-line
+interpreter, it processes commands as you enter them at the command prompt.  When you use it as a programming language, it processes
+commands that are stored in files known as BourneShell scripts. This course will show you how to create and execute BourneShell scripts.
+We will explore BourneShell programming including such features as variables, control structures, processes, and executable files.
+
+The BourneShell is one of three shells available on most UNIX systems.
+Bourne is the accepted standard for System V UNIX.  The other shells are being used more and more.  The other shells are
+the CShell and the KornShell.  The CShell is BSD (Berkeley Software Distribution) UNIX. BSD was developed at the University of
+
+California at Berkeley, California. Most of the features found in the BourneShell are also found in the other shells; there are
+differences, however.  The CShell and KornShell are not standard on UNIX System V but are generally available.
